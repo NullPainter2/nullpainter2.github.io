@@ -76,8 +76,8 @@ class MyAssembly
     End()
     {
         let html = '<div style="display:flex;gap:3rem;">'
-        html += '<div style="flex:1">' + '<h2>C:</h2>' + this.htmlCode + '</div>'
-        html += '<div style="flex:1">' + '<h2>Assembly:</h2>' + this.htmlAsm + '</div>'
+        html += '<div style="width:50%">' + '<h2>C:</h2>' + this.htmlCode + '</div>'
+        html += '<div style="width:50%">' + '<h2>Assembly:</h2>' + this.htmlAsm + '</div>'
         html += '</div>'
 
         this.htmlDiv.innerHTML = html
