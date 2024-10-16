@@ -1,0 +1,34 @@
+.line.HIGHLIGHTED, .line.TOGGLED {
+    background: #ffff0073;
+}
+.line {
+    padding: .75rem 0;
+}
+.command.OPENED {
+    display: '';
+}
+.command.CLOSED pre {
+    display: none;
+}
+
+.code-editor-parent {
+    border: 1px solid #960069;
+    margin: 2rem 0;
+    padding: 1rem;
+}
+
+.js-toggle-button:before {content: "+";}
+.js-toggle {    
+    border: 6px solid #eee;
+}
+.js-toggle-toggled {
+    padding: 1rem;
+}
+.js-toggle.CLOSED .js-toggle-toggled {
+    display: none;
+}
+.js-toggle-button {
+    cursor: pointer;
+    padding: .75rem;
+    margin: 0;
+}
