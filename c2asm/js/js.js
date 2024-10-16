@@ -56,6 +56,7 @@ app.textEditor.Install( app.editor$, app.storage.Get( 'source' ), async ( source
                     }
                     stripingInitalComments = false
                 }
+                
                 app.assembly.AddAsmSource( lineNumber, lineText )
             }
         }
