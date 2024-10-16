@@ -78,7 +78,7 @@ class MyAssembly
         let html = '<div style="display:flex;gap:3rem;overflow:scroll">'
         html += '<div style="width:50%">' + '<h2>C:</h2>' + this.htmlCode + '</div>'
         html += '<div style="width:50%">' + '<h2>Assembly:</h2>' + this.htmlAsm + '</div>'
-        html += '</div> <hr>@version .1'
+        html += '</div> <hr>@version .2'
 
         this.htmlDiv.innerHTML = html
         this.InstallHandlers( this.htmlDiv )
