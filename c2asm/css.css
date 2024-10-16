@@ -2,7 +2,8 @@
     background: #ffff0073;
 }
 .line {
-    padding: .75rem 0;
+    padding: .25rem 0;
+    white-space: break-spaces;
 }
 .command.OPENED {
     display: '';

@@ -44,10 +44,18 @@ app.textEditor.Install( app.editor$, app.storage.Get( 'source' ), async ( source
         {
             // {text: string, source?: null|{ file: null, line: number }}    
             let arr = json.asm
+            let stripingInitalComments = true // MSVC license bs
             for(let i = 0; i < arr.length; i++ )
             {
                 let lineNumber = arr[ i ].source && typeof( arr[ i ].source.line ) == 'number' ? arr[ i ].source.line : null
                 let lineText = arr[ i ].text || ''
+
+                if( stripingInitalComments ) {
+                    if( lineText[0] == '#' ) {
+                        continue;
+                    }
+                    stripingInitalComments = false
+                }
                 app.assembly.AddAsmSource( lineNumber, lineText )
             }
         }
