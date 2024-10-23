@@ -204,7 +204,7 @@ class MyAssembly
         
         html += '<div style="width:50%">' + '<h2>C:</h2>' + this.htmlCode + '</div>'
         html += '<div style="width:50%">' + '<h2>Assembly:</h2>' + this.htmlAsm + '</div>'
-        html += '</div> <hr>@version .4'
+        html += '</div>'
 
         this.htmlDiv.innerHTML = html
         this.InstallHandlers( this.htmlDiv )

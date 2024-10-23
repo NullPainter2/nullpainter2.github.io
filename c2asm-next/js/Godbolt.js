@@ -5,13 +5,22 @@ class Godbolt
     //     return "/DEBUG /O0:FULL /Z7 /Zo /Zi";
     // }
 
-    // example: https://godbolt.org/z/eobs7zv4f
-    DownloadSource( shortenedUrl )
+    GetSourceLinkFromShortLink( shortenedUrl )
     {
-
         let godboltUrl = shortenedUrl
         godboltUrl = godboltUrl.replace(/[/]$/,'') // don't double /
         godboltUrl = godboltUrl + '/code/1'
+
+        // already converted?
+        if( shortenedUrl.match(/[/]code[/]1$/) !== null )
+        {
+            return {
+                ok: true,
+                value: shortenedUrl,
+            }
+        }
+
+        // wrong link or conversion?
         if( godboltUrl.match(/godbolt.org[/]z/) === null)
         {
             return {
@@ -19,22 +28,10 @@ class Godbolt
                 errorMessage: 'Unknown short link format'
             }
         }
-
+        
         return {
             ok: true,
-            url: godboltUrl,
-            download: fetch( godboltUrl, { // 'https://godbolt.org/z/eobs7zv4f/code/1', {
-            	//"headers": {
-            	//"accept": "Accept: text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8", // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept#examples // "application/json, text/javascript, */*; q=0.01",
-            	//"content-type": "text/html",
-            	//},
-
-                //"referrer": "https://godbolt.org/z/js5njzqMW", // PSSSST! Had to store a credit card number somewhere safe ...
-            	//"referrerPolicy": "strict-origin-when-cross-origin",               
-            	"method": "GET",
-            	//"mode": "no-cors", // FUCK CORS CURSE!
-            	//  "credentials": "include"
-        	})
+            value: godboltUrl,
         }
     }
 

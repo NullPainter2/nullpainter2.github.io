@@ -16,6 +16,7 @@ let app = {
     textEditor: new MyTextEditor(),
     assembly: new MyAssembly(),
     godbolt: new Godbolt(),
+    godboltCompileResult: new GodboltCompileResult(),
     storage: new MyLocalStorage(),
 }
 
@@ -33,11 +34,16 @@ app.textEditor.Install(
         app.storage.Set( 'optimizationLevel', String(optimizationLevel) ) 
     
         //app.storage.Set( 'compiler', compiler )
-        let compiler = "vcpp_v19_latest_x64";
-        
+        let compiler = app.textEditor.GetCompiler()
+
+        app.textEditor.SetLoading(true)
         let d = await app.godbolt.Download( sourceText, compiler, optimizationLevel, flags ) // @test
         let json = await d.download.json()
-    
+
+        app.godboltCompileResult.Set( json )
+        app.textEditor.SetLoading(false)
+        app.textEditor.SetHasError( json.code != 0 ) // Tested on: MSVC
+
         // {text: string}[]
         // obj.stderr
     
